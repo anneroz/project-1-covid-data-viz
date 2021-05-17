@@ -1,4 +1,11 @@
-#chart {
-    height: 50vh;
-    background-color: lightgrey;
+.container {
+    background-color: lightcoral;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#more-info {
+    background-color: lightgreen;
 }
