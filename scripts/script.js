@@ -1,17 +1,22 @@
 // read in historical data for Singapore
 
-let date = [];
-let deaths = [];
-let vaccines = [];
+let dateArray = [];
+let vaccinesArray = [];
 
 async function loadData() {
     let vaccineResponse = await axios.get("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
-    let totalsResponse = await axios.get("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
+    let deathsResponse = await axios.get("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
 
-    console.log(vaccineResponse.data);
-    console.log(totalsResponse.data);
+    let vaccineDayNum = vaccineResponse.data.timeline
+    let deathDayNum = deathsResponse.data.
+
+    for (let day in vaccineDayNum) {
+        vaccinesArray.push(vaccineDayNum[day].total);
+        dateArray.push(vaccineDayNum[day].date);
+    }
+
+    // for (let day in )
 }
-
 loadData();
 
 // setup global options for charts
@@ -29,10 +34,10 @@ window.Apex = {
 let optionsVaccine = {
     series: [{
         name: 'Vaccines Administered',
-        data: [4, 8, 15, 16, 23, 42]
+        data: vaccinesArray
     }],
     xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+        categories: dateArray
     },
     colors: ['#008FFB'],
     chart: {
