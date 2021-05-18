@@ -1,11 +1,8 @@
-// read in historical data for Singapore
-
-let vaccinesDateArray = [];
+let datesArray = [];
 let vaccinesArray = [];
-
-let deathsDateArray = [];
 let deathsArray = [];
 
+// read in historical data for Singapore
 async function loadData() {
     let vaccineResponse = await axios.get("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
     let deathsResponse = await axios.get("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
@@ -15,11 +12,9 @@ async function loadData() {
 
     for (let day in vaccineDays) {
         vaccinesArray.push(vaccineDays[day].total);
-        vaccinesDateArray.push(vaccineDays[day].date);
+        datesArray.push(vaccineDays[day].date);
     }
-    
     for (let day in deathDays) {
-        deathsDateArray.push(day);
         deathsArray.push(deathDays[day]);
     }
 }
@@ -43,7 +38,7 @@ let optionsVaccine = {
         data: vaccinesArray
     }],
     xaxis: {
-        categories: vaccinesDateArray
+        categories: datesArray
     },
     colors: ['#008FFB'],
     chart: {
@@ -68,7 +63,7 @@ let optionsDeath = {
         data: deathsArray
     }],
     xaxis: {
-        categories: deathsDateArray
+        categories: datesArray
     },
     colors: ['#546E7A'],
     chart: {
