@@ -1,33 +1,35 @@
+// to read in url
+async function load(url) {
+    let response = await axios.get(url);
+    return(response.data);
+}
+
+// to store transformed raw data
+let vaccinesSeries = [];
+let deathsSeries = [];
+
+// to transform data to reflect 'x' and 'y' keys
+function transformData(vaccineData, historicalData) {
+    for (let i in vaccineData.timeline) {
+        vaccinesSeries.push({
+            'x': vaccineData.timeline[i].date,
+            'y': vaccineData.timeline[i].total
+        })
+    };
+    for (let i in historicalData.timeline.deaths) {
+        deathsSeries.push({
+            'x': i,
+            'y': historicalData.timeline.deaths[i]
+        })
+    };
+}
+
 // wait for all the DOM elements to be created, then load in the url
 window.addEventListener('DOMContentLoaded', async function(){
-    let rawData = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
-    transformData(rawData);
+    let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
+    let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
+    transformData(vaccinesTimeline, historicalTimeline);
 })
-
-
-
-
-// let datesArray = [];
-// let vaccinesArray = [];
-// let deathsArray = [];
-
-// // read in historical data for Singapore
-// async function loadData() {
-//     let vaccineResponse = await axios.get("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
-//     let deathsResponse = await axios.get("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
-
-//     let vaccineDays = vaccineResponse.data.timeline
-//     let deathDays = deathsResponse.data.timeline.deaths
-
-//     for (let day in vaccineDays) {
-//         vaccinesArray.push(vaccineDays[day].total);
-//         datesArray.push(vaccineDays[day].date);
-//     }
-//     for (let day in deathDays) {
-//         deathsArray.push(deathDays[day]);
-//     }
-// }
-// loadData();
 
 // // setup global options for charts
 // window.Apex = {
