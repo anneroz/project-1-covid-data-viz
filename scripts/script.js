@@ -1,17 +1,17 @@
 // to read in url
 async function load(url) {
     let response = await axios.get(url);
-    return(response.data);
+    return (response.data);
 }
 
 // to store transformed raw data
-let vaccinesSeries = [];
-let deathsSeries = [];
+var vaccinesSeries = [];
+var deathsSeries = [];
 
 // to transform data to reflect 'x' and 'y' keys
 function transformData(vaccineData, historicalData) {
     for (let i in vaccineData.timeline) {
-        vaccinesSeries.push ({
+        vaccinesSeries.push({
             'x': vaccineData.timeline[i].date,
             'y': vaccineData.timeline[i].total
         })
@@ -20,7 +20,7 @@ function transformData(vaccineData, historicalData) {
     for (let i in historicalData.timeline.deaths) {
         let chunk = i.split('/')
         if (chunk[2] > 20 || chunk[2] == 20 && chunk[0] == 12) {
-            deathsSeries.push ({
+            deathsSeries.push({
                 'x': i,
                 'y': historicalData.timeline.deaths[i]
             })
@@ -28,21 +28,60 @@ function transformData(vaccineData, historicalData) {
     }
 }
 
-// wait for all the DOM elements to be created, then load in the url
-window.addEventListener('DOMContentLoaded', async function(){
-    let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
-    let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
-    transformData(vaccinesTimeline, historicalTimeline);
-    
-    console.log(vaccinesSeries);
-    console.log(deathsSeries);
-})
-
-window.Apex = {
+let vaccinesOptions = {
+    series: [],
     chart: {
-        height: 160,
+        id: 'line-vaccines',
+        group: 'vaccinesVsDeaths',
+        type: 'line',
+        height: 160
     },
-    dataLabels: {
-        enabled: true
+    colors: ['#008FFB'],
+    yaxis: {
+        labels: {
+            minWidth: 40
+        }
     }
-}
+};
+
+let vaccinesChart = new ApexCharts(document.querySelector("#chart-vaccines"), vaccinesOptions);
+vaccinesChart.render();
+
+let deathsOptions = {
+    series: [],
+    chart: {
+        id: 'line-deaths',
+        group: 'vaccinesVsDeaths',
+        type: 'line',
+        height: 160
+    },
+    colors: ['#546E7A'],
+    yaxis: {
+        labels: {
+            minWidth: 40
+        }
+    }
+};
+
+let deathsChart = new ApexCharts(document.querySelector("#chart-deaths"), deathsOptions);
+deathsChart.render();
+
+// wait for all the DOM elements to be created, then load in the url
+window.addEventListener('DOMContentLoaded', async function () {
+    let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/usa?lastdays=all&fullData=true");
+    let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/usa?lastdays=all");
+    transformData(vaccinesTimeline, historicalTimeline);
+
+    // console.log(vaccinesSeries);
+    // console.log(deathsSeries);
+
+    vaccinesChart.updateSeries([{
+        name: 'Vaccines Administered',
+        data: vaccinesSeries
+    }])
+
+    deathsChart.updateSeries([{
+        name: 'Total Deaths',
+        data: deathsSeries
+    }])
+})

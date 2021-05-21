@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+/* #chart-vaccines {
+    height: 80vh;
+} */
+
 #more-info {
     background-color: lightgreen;
 }
