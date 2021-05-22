@@ -6,29 +6,54 @@ async function load(url) {
 
 // transform vaccine cases raw data
 function transformData(rawData) {
-    console.log(rawData.timeline);
+    // console.log(rawData.timeline);
     let mapped = rawData.timeline.map ( (datnum) => {
         return {
             'date': new Date(datnum.date),
             'vaccines': datnum.total
         }
     })
-    console.log(mapped);
+    // console.log(mapped);
 
     // remove 0 cases
     let filtered = mapped.filter( (datnum) => {
         return datnum.vaccines !== 0;
     })
-    console.log(filtered);
+    // console.log(filtered);
+
+    // map data again, so that months will be converted to values, and can total up vaccine cases within the month later
+    let byMonth = filtered.map( (datnum) => {
+        return {
+            // getMonth returns values 0 to 11, with 0 being Jan and 11 being Dec
+            'date': datnum.date.getMonth(),
+            'vaccines': datnum.vaccines
+        }
+    });
+    console.log(byMonth);
+    
+    let groupBy = (data, key) => {
+        return data.reduce ( (storage, item) => {
+            let group = item[key];
+            storage[group] = storage[group] || [];
+            storage[group].push(item);
+            return storage;
+        }, {});
+    };
+    let groups = groupBy(byMonth, 'date');
+    console.log(groups);
+
+    let series = Object.values(groups).map( (group, month) => {
+        return {
+            'x': monthNames[month],
+            'y': group.reduce((acc, datnum) => acc + Math.max(datnum.vaccines), 0)
+        };
+    });
+    console.log(series);
 }
 
 window.addEventListener('DOMContentLoaded', async function () {
     let historicalTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/usa?lastdays=all&fullData=true");
     transformData(historicalTimeline);
-
-    // console.log(vaccinesSeries);
-    // console.log(deathsSeries);
-
 })
 
 
