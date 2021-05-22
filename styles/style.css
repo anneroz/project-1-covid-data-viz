@@ -1,15 +1,13 @@
-.container {
-    background-color: lightcoral;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
+.navbar-custom {
+    background-color: #A8DADC;
 }
 
-/* #chart-vaccines {
-    height: 80vh;
-} */
+#container {
+    display: flex;
+    height: 100vh;
+}
 
-#more-info {
-    background-color: lightgreen;
+.chart {
+    flex-basis: 100%;
+    flex: 1;
 }

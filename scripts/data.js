@@ -28,44 +28,6 @@ function transformData(vaccineData, historicalData) {
     }
 }
 
-let vaccinesOptions = {
-    series: [],
-    chart: {
-        id: 'line-vaccines',
-        group: 'vaccinesVsDeaths',
-        type: 'line',
-        height: 160
-    },
-    colors: ['#008FFB'],
-    yaxis: {
-        labels: {
-            minWidth: 40
-        }
-    }
-};
-
-let vaccinesChart = new ApexCharts(document.querySelector("#chart-vaccines"), vaccinesOptions);
-vaccinesChart.render();
-
-let deathsOptions = {
-    series: [],
-    chart: {
-        id: 'line-deaths',
-        group: 'vaccinesVsDeaths',
-        type: 'line',
-        height: 160
-    },
-    colors: ['#546E7A'],
-    yaxis: {
-        labels: {
-            minWidth: 40
-        }
-    }
-};
-
-let deathsChart = new ApexCharts(document.querySelector("#chart-deaths"), deathsOptions);
-deathsChart.render();
-
 // wait for all the DOM elements to be created, then load in the url
 window.addEventListener('DOMContentLoaded', async function () {
     let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/usa?lastdays=all&fullData=true");
