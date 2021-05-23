@@ -47,3 +47,22 @@ const deathsOptions = {
 // create and render deaths chart
 const deathsChart = new ApexCharts(document.querySelector("#chart-deaths"), deathsOptions);
 deathsChart.render();
+
+// define options for historical cases, deaths, and recoveries pie chart
+const pieOptions = {
+    chart: {
+        type: 'pie',
+        height: '100%'
+    },
+    noData: {
+        text: 'Loading...please wait'
+    },
+    series: [],
+    labels: ['cases', 'deaths', 'recoveries']
+}
+
+// create pie chart
+const pieChart = new ApexCharts(document.querySelector('#chart-totals'), pieOptions);
+
+// render pie chart
+pieChart.render();
