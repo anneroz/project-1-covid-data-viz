@@ -17,21 +17,20 @@ function transformData(rawData) {
 
     // remove 0 cases
     let filtered = mapped.filter((datnum) => {
-        // if year is 2020, getYear() returns 120
+        // getYear() > 120 == 2020
         return datnum.vaccines !== 0 && datnum.date.getYear() > 120;
     })
     // console.log(filtered);
 
-    // map data again, so that months will be converted to values,
-    // and can pick up total vaccines done so far as of last day of the month later
+    // map data again, so that months will be converted to values
     let byMonth = filtered.map((datnum) => {
         return {
             // getMonth returns values 0 to 11, with 0 being Jan and 11 being Dec
-            'date': datnum.date.getMonth(),
+            'month': datnum.date.getMonth(),
             'vaccines': datnum.vaccines
         }
     });
-    // console.log(byMonth);
+    console.log(byMonth);
 
     let groupBy = (data, key) => {
         return data.reduce((storage, item) => {
@@ -41,45 +40,29 @@ function transformData(rawData) {
             return storage;
         }, {});
     };
-    let groups = groupBy(byMonth, 'date');
+    let groups = groupBy(byMonth, 'month');
     console.log(groups);
 
-    // let series = Object.values(groups).map((group, month) => {
-    //     return {
-    //         x: monthNames[month], // what is 'monthNames' supposed to be? tried entering as string, will output each alphabet in the string in each object
-    //         y: group.reduce((acc, datanum) => acc + datanum.vaccines, 0)  // use Math.max instead???
-    //     };
-    // });
+    let months = ['Jan 2021', 'Feb 2021', 'Mar 2021', 'Apr 2021', 'May 2021', 'Jun 2021', 'Jul 2021', 'Aug 2021', 'Sep 2021', 'Oct 2021', 'Nov 2021', 'Dec 2021'];
+    let vaccinesSeries = Object.values(groups).map((group, month) => {
+        return {
+            x: months[month],
+            y: group.reduce((acc, datnum) => {
+                if (acc == null || datnum.vaccines > acc) return datnum.vaccines;
+            })
+        };
+    });
 
-    // console.log(series);
-    
-    // Getting highest vaccinations in each month  
-    
-    // Method 1:
-    // let highestVaccinationByMonth = [];
-    // let availableMonthsZeroIndexed = Object.keys(groups);
-    // for (let i = 0; i < availableMonthsZeroIndexed.length; i++) {
-    //     let monthVaccinations = groups[i];
-    //     for (let n = 0; n < monthVaccinations.length; n++) {
-    //         if (n === 0) highestVaccinationByMonth[i] = monthVaccinations[n].vaccines;
-    //         else if (highestVaccinationByMonth[i] < monthVaccinations[n].vaccines)
-    //             highestVaccinationByMonth[i] = monthVaccinations[n].vaccines;
-    //     }
-    // }
-    // console.log(highestVaccinationByMonth);
-
-    // Method 2 - actually the highest are the last entry in the month because it's cumulative data:
-    // let highestVaccinationByMonth = [];
-    // let availableMonthsZeroIndexed = Object.keys(groups);
-    // for (let i = 0; i < availableMonthsZeroIndexed.length; i++) {
-    //     let lastIndexOfMonthGroup = groups[i].length - 1;
-    //     highestVaccinationByMonth[i] = groups[i][lastIndexOfMonthGroup].vaccines;
-    // }
-    // console.log(highestVaccinationByMonth);
+    vaccinesChart.updateSeries([
+        {
+            name: 'Total Vaccines Administered So Far',
+            data: vaccinesSeries
+        }
+    ]);
 }
 
 window.addEventListener('DOMContentLoaded', async function () {
-    let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/usa?lastdays=all&fullData=true");
+    let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
     transformData(vaccinesTimeline);
 })
 
