@@ -113,30 +113,29 @@ let searchButton = document.querySelector('#search-btn');
 searchButton.addEventListener('click', async (event) => {
     event.preventDefault();
 
+    // clear existing data in both vaccines and deaths series 
+    vaccinesSeries = [];
+    deathsSeries = [];
+
     let userCountrySearch = document.querySelector('#search-text').value;
-    
+
     // store new api url based on user's country search
     let newVaccinesUrl = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${userCountrySearch}?lastdays=all&fullData=true`;
     let newDeathsUrl = `https://disease.sh/v3/covid-19/historical/${userCountrySearch}?lastdays=all`;
 
-    // load new data based on user's search
+    // load new raw data based on user's country search
     let newVaccinesTimeline = await load(newVaccinesUrl);
     let newDeathsTimeline = await load(newDeathsUrl);
-    console.log(newVaccinesTimeline);
-    console.log(newDeathsTimeline);
-    
-    // let vaccinesTimeline = userSearchedVaccinesUrl;
-    // let deathsTimeline = userSearchedDeathsUrl;
 
-    // transformData(vaccinesTimeline, deathsTimeline);
+    transformData(newVaccinesTimeline, newDeathsTimeline);
+    // console.log(vaccinesSeries);
+    // console.log(deathsSeries);
 
-    // vaccinesChart.updateSeries([{
-    //     name: 'Vaccines Administered',
-    //     data: vaccinesSeries
-    // }])
+    vaccinesChart.updateSeries([{
+        data: vaccinesSeries
+    }])
 
-    // deathsChart.updateSeries([{
-    //     name: 'Total Deaths',
-    //     data: deathsSeries
-    // }])
+    deathsChart.updateSeries([{
+        data: deathsSeries
+    }])
 })
