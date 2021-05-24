@@ -29,12 +29,18 @@ function transformData(vaccineData, historicalData) {
 }
 
 let vaccinesOptions = {
+    noData: {
+        text: 'Please wait...loading data.'
+    },
     series: [],
+    title: {
+        text: 'Historical Number of Vaccines Administered'
+    },
     chart: {
         id: 'line-vaccines',
         group: 'vaccinesVsDeaths',
         type: 'line',
-        height: 160
+        height: '50%'
     },
     colors: ['#008FFB'],
     yaxis: {
@@ -48,12 +54,18 @@ let vaccinesChart = new ApexCharts(document.querySelector("#chart-vaccines"), va
 vaccinesChart.render();
 
 let deathsOptions = {
+    noData: {
+        text: 'Please wait...loading data.'
+    },
     series: [],
+    title: {
+        text: 'Historical Number of Deaths'
+    },
     chart: {
         id: 'line-deaths',
         group: 'vaccinesVsDeaths',
         type: 'line',
-        height: 160
+        height: '50%'
     },
     colors: ['#546E7A'],
     yaxis: {
@@ -84,4 +96,11 @@ window.addEventListener('DOMContentLoaded', async function () {
         name: 'Total Deaths',
         data: deathsSeries
     }])
+})
+
+document.querySelector('#search-btn').addEventListener('click', (event) => {
+    // alert('clicked');
+    event.preventDefault();
+    let userCountrySearch = document.querySelector('#search-text').value;
+    // console.log(userCountrySearch);
 })
