@@ -1,9 +1,3 @@
-#container {
-    display: flex;
-    height: 50vh;
-}
-
-.chart {
-    flex-basis: 100%;
-    flex: 1;
+#synced-charts {
+    height: 90vh;
 }

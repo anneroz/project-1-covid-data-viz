@@ -16,36 +16,22 @@
 </head>
 
 <body>
-
-    <!-- search bar -->
+    <!-- nav bar -->
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <form class="d-flex" id="form">
-                <input class="form-control me-2" id="search-country" type="search" placeholder="Search country..."
-                    aria-label="Search">
-                <button class="btn btn-outline-success" id="search-btn" type="submit">Search</button>
-            </form>
+          <a class="navbar-brand">Navbar</a>
+          <form class="d-flex">
+            <input class="form-control me-2" id="search-text" type="search" placeholder="Search country..." aria-label="Search">
+            <button class="btn btn-outline-success" id="search-btn" type="submit">Search</button>
+          </form>
         </div>
-    </nav>
+      </nav>
 
-    <main>
-        <!-- charts -->
-        <div id="container">
-            <div class="chart">
-                <div id="chart-vaccines"></div>
-            </div>
-
-            <div class="chart">
-                <div id="chart-deaths"></div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="chart">
-                <div id="chart-totals"></div>
-            </div>
-        </div>
-    </main>
+    <!-- charts -->
+    <div id="synced-charts">
+        <div id="chart-vaccines"></div>
+        <div id="chart-deaths"></div>
+    </div>
 
     <!-- scripts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
