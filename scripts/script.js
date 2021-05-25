@@ -135,6 +135,7 @@ searchButton.addEventListener('click', async (event) => {
 
     // clear existing data in global variables 
     vaccinesSeries = [];
+    deathsSeries = [];
     vaccinesDates = [];
     filteredDeathsSeries = [];
 
