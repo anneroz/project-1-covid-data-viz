@@ -2,15 +2,11 @@
 // global variables //
 //////////////////////
 
-let vaccinesBaseUrl = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${userCountrySearch}?lastdays=${userDaysSearch}&fullData=true`;
-let historicalBaseUrl = `https://disease.sh/v3/covid-19/historical/${userCountrySearch}?lastdays=${userDaysSearch}`;
-
 // to store transformed raw data
 let vaccinesSeries = [];
 let deathsSeries = [];
 
-// base urls
-let vaccinesBaseUrl = 
+////////////////////////////////////////////////////////////////////////////////////////
 
 // to read in url
 async function load(url) {
@@ -22,11 +18,15 @@ async function load(url) {
 function transformData(vaccineData, historicalData) {
 
     for (let i in vaccineData.timeline) {
-        vaccinesSeries.push({
-            'x': vaccineData.timeline[i].date,
-            'y': vaccineData.timeline[i].total
-        })
+        // remove all cases with 0 vaccinations
+        if (vaccineData.timeline[i].total !== 0) {
+            vaccinesSeries.push({
+                'x': vaccineData.timeline[i].date,
+                'y': vaccineData.timeline[i].total
+            })
+        }
     }
+    console.log(vaccinesSeries);
 
     // vaccines series starts on 1 Dec 2020, deaths series starts on 22 Jan 2020
     for (let i in historicalData.timeline.deaths) {
@@ -103,8 +103,8 @@ deathsChart.render();
 
 // wait for all the DOM elements to be created, then load in the url
 window.addEventListener('DOMContentLoaded', async function () {
-    let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/global?lastdays=all&fullData=true");
-    let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/global?lastdays=all");
+    let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
+    let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
     transformData(vaccinesTimeline, historicalTimeline);
 
     // console.log(vaccinesSeries);
@@ -128,14 +128,18 @@ searchButton.addEventListener('click', async (event) => {
     deathsSeries = [];
 
     let userCountrySearch = document.querySelector('#search-country').value;
+    let userDaysSearch = document.querySelector('#search-days').value;
 
     // store new api url based on user's country search
-    let newVaccinesUrl = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${userCountrySearch}?lastdays=all&fullData=true`;
-    let newDeathsUrl = `https://disease.sh/v3/covid-19/historical/${userCountrySearch}?lastdays=all`;
+    let newVaccinesUrl = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${userCountrySearch}?lastdays=${userDaysSearch}&fullData=true`;
+    let newDeathsUrl = `https://disease.sh/v3/covid-19/historical/${userCountrySearch}?lastdays=${userDaysSearch}`;
 
     // load new raw data based on user's country search
     let newVaccinesTimeline = await load(newVaccinesUrl);
     let newDeathsTimeline = await load(newDeathsUrl);
+
+    console.log(newVaccinesTimeline);
+    console.log(newDeathsTimeline);
     
     //////////////////////////////////////////
     // how to handle erroreous user search????
