@@ -1,12 +1,15 @@
-//////////////////////
-// global variables //
-//////////////////////
+//////////////////////// global variables ////////////////////////
 
 // to store transformed raw data
 let vaccinesSeries = [];
 let deathsSeries = [];
 
-////////////////////////////////////////////////////////////////////////////////////////
+// to store dates of vaccines cases after removing 0 cases
+let vaccinesDates = []
+
+let filteredDeathsSeries = [];
+
+//////////////////////////////////////////////////////////////////
 
 // to read in url
 async function load(url) {
@@ -26,15 +29,25 @@ function transformData(vaccineData, historicalData) {
             })
         }
     }
-    console.log(vaccinesSeries);
 
-    // vaccines series starts on 1 Dec 2020, deaths series starts on 22 Jan 2020
     for (let i in historicalData.timeline.deaths) {
-        let chunk = i.split('/')
-        if (chunk[2] > 20 || chunk[2] == 20 && chunk[0] == 12) {
-            deathsSeries.push({
-                'x': i,
-                'y': historicalData.timeline.deaths[i]
+        deathsSeries.push({
+            'x': i,
+            'y': historicalData.timeline.deaths[i]
+        })
+    }
+
+    // vaccines raw data dates starts on 1 Dec 2020, deaths raw date dates starts on 22 Jan 2020
+    for (let datnum of vaccinesSeries) {
+        vaccinesDates.push(datnum.x);
+    }
+
+    console.log(filteredDeathsSeries);
+    for (let datnum of deathsSeries) {
+        if (vaccinesDates.includes(datnum.x)) {
+            filteredDeathsSeries.push({
+                'x': datnum.x,
+                'y': datnum.y
             })
         }
     }
@@ -107,15 +120,12 @@ window.addEventListener('DOMContentLoaded', async function () {
     let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
     transformData(vaccinesTimeline, historicalTimeline);
 
-    // console.log(vaccinesSeries);
-    // console.log(deathsSeries);
-
     vaccinesChart.updateSeries([{
         data: vaccinesSeries
     }])
 
     deathsChart.updateSeries([{
-        data: deathsSeries
+        data: filteredDeathsSeries
     }])
 })
 
@@ -123,9 +133,10 @@ let searchButton = document.querySelector('#search-btn');
 searchButton.addEventListener('click', async (event) => {
     event.preventDefault();
 
-    // clear existing data in both vaccines and deaths series 
+    // clear existing data in global variables 
     vaccinesSeries = [];
-    deathsSeries = [];
+    vaccinesDates = [];
+    filteredDeathsSeries = [];
 
     let userCountrySearch = document.querySelector('#search-country').value;
     let userDaysSearch = document.querySelector('#search-days').value;
@@ -138,23 +149,17 @@ searchButton.addEventListener('click', async (event) => {
     let newVaccinesTimeline = await load(newVaccinesUrl);
     let newDeathsTimeline = await load(newDeathsUrl);
 
-    console.log(newVaccinesTimeline);
-    console.log(newDeathsTimeline);
-    
     //////////////////////////////////////////
     // how to handle erroreous user search????
     //////////////////////////////////////////
 
-
     transformData(newVaccinesTimeline, newDeathsTimeline);
-    // console.log(vaccinesSeries);
-    // console.log(deathsSeries);
 
     vaccinesChart.updateSeries([{
         data: vaccinesSeries
     }])
 
     deathsChart.updateSeries([{
-        data: deathsSeries
+        data: filteredDeathsSeries
     }])
 })
