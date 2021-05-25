@@ -17,48 +17,25 @@
 
 <body>
   <!-- nav bar -->
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand">Navbar</a>
       <form class="d-flex">
-        <input class="form-control me-2" id="search-country" type="search" placeholder="Country..." aria-label="Search">
-        <input class="form-control me-2" id="search-days" type="search" placeholder="No. of days up to current day..."
+        <input class="form-control me-2" id="search-country" type="search" placeholder="Country..."
           aria-label="Search">
-        <button class="btn btn-outline-light" id="search-btn" type="submit">Search</button>
+        <input class="form-control me-2" id="search-days" type="search" placeholder="Day range..."
+          aria-label="Search">
+        <button class="btn btn-outline-success" id="search-btn" type="submit">Search</button>
       </form>
     </div>
   </nav>
 
   <main>
-
     <!-- charts -->
-    <div id="display-chart-container">
-      <div class="display-chart">
-        <div id="chart-vaccines"></div>
-      </div>
-      <div class="display-chart">
-        <div id="chart-deaths"></div>
-      </div>
+    <div id="synced-charts">
+      <div id="chart-vaccines"></div>
+      <div id="chart-deaths"></div>
     </div>
-
-    <!-- dashboard -->
-    <div class="container" id="display-dashboard-container">
-      <div class="row" id="display-dashboard-row">
-        <div class="dashboard-total col-12 col-md-6 col-lg-3">
-          Total Cases
-        </div>
-        <div class="dashboard-today col-12 col-md-6 col-lg-3">
-          Today Cases
-        </div>
-        <div class="dashboard-active col-12 col-md-6 col-lg-3">
-          Active Cases
-        </div>
-        <div class="dashboard recovered col-12 col-md-6 col-lg-3">
-          Recovered
-        </div>
-      </div>
-    </div>
-
   </main>
 
   <!-- scripts -->

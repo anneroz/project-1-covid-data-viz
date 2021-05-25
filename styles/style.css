@@ -1,24 +1,16 @@
-body {
-  background-color: lightslategray;
-}
+/* body {
+  background-color: lightsteelblue;
+} */
 
-#display-chart-container {
-  height: 100vh;
-}
-
-.display-chart {
-  height: 50%;
+#synced-charts {
+    height: 90vh;
 }
 
 /* screen sizes 700px and up */
 /* @media screen and (min-width: 700px) {
-    #display-chart-container {
+    #display-img-container {
       display: flex;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
       justify-content: center;
-    };
-    .display-chart {
-      flex: 1;
-      flex-basis: 100%;
     }
   } */

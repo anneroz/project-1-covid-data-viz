@@ -1,10 +1,10 @@
 //////////////////////// global variables ////////////////////////
 
-// transformed raw data
+// to store transformed raw data
 let vaccinesSeries = [];
 let deathsSeries = [];
 
-// dates of vaccines cases after removing 0 cases
+// to store dates of vaccines cases after removing 0 cases
 let vaccinesDates = []
 
 let filteredDeathsSeries = [];
@@ -42,6 +42,7 @@ function transformData(vaccineData, historicalData) {
         vaccinesDates.push(datnum.x);
     }
 
+    console.log(filteredDeathsSeries);
     for (let datnum of deathsSeries) {
         if (vaccinesDates.includes(datnum.x)) {
             filteredDeathsSeries.push({
@@ -69,7 +70,8 @@ let vaccinesOptions = {
         id: 'line-vaccines',
         group: 'vaccinesVsDeaths',
         type: 'line',
-        height: '100%'
+        background: '#f4f4f4',
+        height: '50%'
     },
     colors: ['#008FFB'],
     yaxis: {
@@ -100,7 +102,8 @@ let deathsOptions = {
         id: 'line-deaths',
         group: 'vaccinesVsDeaths',
         type: 'line',
-        height: '100%'
+        background: '#f4f4f4',
+        height: '50%'
     },
     colors: ['#546E7A'],
     yaxis: {
@@ -148,6 +151,10 @@ searchButton.addEventListener('click', async (event) => {
     // load new raw data based on user's country search
     let newVaccinesTimeline = await load(newVaccinesUrl);
     let newDeathsTimeline = await load(newDeathsUrl);
+
+    //////////////////////////////////////////
+    // how to handle erroreous user search????
+    //////////////////////////////////////////
 
     transformData(newVaccinesTimeline, newDeathsTimeline);
 
