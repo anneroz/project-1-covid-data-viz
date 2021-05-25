@@ -42,7 +42,6 @@ function transformData(vaccineData, historicalData) {
         vaccinesDates.push(datnum.x);
     }
 
-    console.log(filteredDeathsSeries);
     for (let datnum of deathsSeries) {
         if (vaccinesDates.includes(datnum.x)) {
             filteredDeathsSeries.push({
@@ -70,8 +69,7 @@ let vaccinesOptions = {
         id: 'line-vaccines',
         group: 'vaccinesVsDeaths',
         type: 'line',
-        background: '#f4f4f4',
-        height: '50%'
+        background: 'lightcoral'
     },
     colors: ['#008FFB'],
     yaxis: {
@@ -88,7 +86,6 @@ let deathsOptions = {
     noData: {
         text: 'Please wait...loading data.'
     },
-
     series: [
         {
             name: 'Deaths',
@@ -102,8 +99,7 @@ let deathsOptions = {
         id: 'line-deaths',
         group: 'vaccinesVsDeaths',
         type: 'line',
-        background: '#f4f4f4',
-        height: '50%'
+        background: 'mediumseagreen'
     },
     colors: ['#546E7A'],
     yaxis: {
