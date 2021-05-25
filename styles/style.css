@@ -1,3 +1,16 @@
+body {
+  background-color: black;
+}
+
 #synced-charts {
     height: 90vh;
 }
+
+/* screen sizes 700px and up */
+/* @media screen and (min-width: 700px) {
+    #display-img-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  } */

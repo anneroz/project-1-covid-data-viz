@@ -1,12 +1,22 @@
+//////////////////////
+// global variables //
+//////////////////////
+
+let vaccinesBaseUrl = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${userCountrySearch}?lastdays=${userDaysSearch}&fullData=true`;
+let historicalBaseUrl = `https://disease.sh/v3/covid-19/historical/${userCountrySearch}?lastdays=${userDaysSearch}`;
+
+// to store transformed raw data
+let vaccinesSeries = [];
+let deathsSeries = [];
+
+// base urls
+let vaccinesBaseUrl = 
+
 // to read in url
 async function load(url) {
     let response = await axios.get(url);
     return (response.data);
 }
-
-// to store transformed raw data
-let vaccinesSeries = [];
-let deathsSeries = [];
 
 // to transform data to reflect 'x' and 'y' keys
 function transformData(vaccineData, historicalData) {
@@ -93,8 +103,8 @@ deathsChart.render();
 
 // wait for all the DOM elements to be created, then load in the url
 window.addEventListener('DOMContentLoaded', async function () {
-    let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
-    let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
+    let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/global?lastdays=all&fullData=true");
+    let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/global?lastdays=all");
     transformData(vaccinesTimeline, historicalTimeline);
 
     // console.log(vaccinesSeries);
@@ -117,7 +127,7 @@ searchButton.addEventListener('click', async (event) => {
     vaccinesSeries = [];
     deathsSeries = [];
 
-    let userCountrySearch = document.querySelector('#search-text').value;
+    let userCountrySearch = document.querySelector('#search-country').value;
 
     // store new api url based on user's country search
     let newVaccinesUrl = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${userCountrySearch}?lastdays=all&fullData=true`;
@@ -126,6 +136,11 @@ searchButton.addEventListener('click', async (event) => {
     // load new raw data based on user's country search
     let newVaccinesTimeline = await load(newVaccinesUrl);
     let newDeathsTimeline = await load(newDeathsUrl);
+    
+    //////////////////////////////////////////
+    // how to handle erroreous user search????
+    //////////////////////////////////////////
+
 
     transformData(newVaccinesTimeline, newDeathsTimeline);
     // console.log(vaccinesSeries);
