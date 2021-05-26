@@ -15,9 +15,10 @@ let vaccinesOptions = {
         id: 'area-vaccines',
         group: 'vaccinesVsDeaths',
         type: 'area',
-        background: '#f4f4f4'
+        background: '#f4f4f4',
+        fontFamily: 'Roboto Condensed, sans-serif'
     },
-    colors: ['#001219', '#0A9396', '#E9D8A6'],
+    colors: ['#0AD1D1'],
     fill: {
         type: "gradient",
         gradient: {
@@ -60,9 +61,10 @@ let deathsOptions = {
         id: 'area-deaths',
         group: 'vaccinesVsDeaths',
         type: 'area',
-        background: '#f4f4f4'
+        background: '#f4f4f4',
+        fontFamily: 'Roboto Condensed, sans-serif'
     },
-    colors: ['#9B2226', '#BB3E03', '#EE9B00'],
+    colors: ['#D10A0A'],
     fill: {
         type: "gradient",
         gradient: {
