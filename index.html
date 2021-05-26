@@ -16,8 +16,9 @@
 </head>
 
 <body>
+
   <!-- nav bar -->
-  <nav class="navbar navbar-light bg-light"> <!-- always 10vh of screen -->
+  <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand">Covid Data Viz (website title)</a>
       <form class="d-flex">
@@ -28,27 +29,31 @@
     </div>
   </nav>
 
-  <!-- landing area -->
-  <div id="landing"> <!-- always 90vh of screen -->
-    <div id="landing-charts"> <!-- 80% of landing div -->
-      <!-- charts -->
-      <div id="chart-container" class="row">
-        <div class="display-chart mt-4">
+  <main>
+    <!-- charts -->
+    <div id="charts">
+      <div class="row">
+        <div class="display-chart mt-4 col-md-6">
           <div id="chart-vaccines"></div>
         </div>
-        <div class="display-chart mt-4">
+        <div class="display-chart mt-4 col-md-6">
           <div id="chart-deaths"></div>
         </div>
       </div>
     </div>
-    <div id="landing-text" class="text-center"> <!-- 20% of landing div -->
-      <h2>Vaccinate, Don't Hesitate</h2>
-      <a href="" id="btn-register" class="btn btn-primary rounded-pill">Register Now</a>
-      <a href="" id="btn-info" class="btn btn-secondary rounded-pill">More Info</a>
-    </div>
-  </div>
 
+    <!-- register -->
+    <section>
+      <div>
+        <h2 class="text-center">Vaccinate, Don't Hesitate</h2>
+        <div id="buttons" class="text-center">
+          <a href="" class="btn btn-primary rounded-pill">Register Now</a>
+          <a href="" class="btn btn-secondary rounded-pill">More Info</a>
+        </div>
+      </div>
+    </section>
 
+  </main>
 
   <!-- scripts -->
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

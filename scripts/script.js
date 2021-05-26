@@ -69,7 +69,7 @@ let vaccinesOptions = {
         id: 'line-vaccines',
         group: 'vaccinesVsDeaths',
         type: 'line',
-        background: 'lightcoral'
+        background: '#f4f4f4'
     },
     colors: ['#008FFB'],
     yaxis: {
@@ -99,7 +99,7 @@ let deathsOptions = {
         id: 'line-deaths',
         group: 'vaccinesVsDeaths',
         type: 'line',
-        background: 'mediumseagreen'
+        background: '#f4f4f4'
     },
     colors: ['#546E7A'],
     yaxis: {
