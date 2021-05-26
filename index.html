@@ -23,7 +23,8 @@
       <a class="navbar-brand">Covid Data Viz (website title)</a>
       <form class="d-flex">
         <input class="form-control me-2" id="search-country" type="search" placeholder="Country..." aria-label="Search">
-        <input class="form-control me-2" id="search-days" type="search" placeholder="Day range..." aria-label="Search">
+        <input class="form-control me-2" id="search-days" type="search" placeholder="No. of days..."
+          aria-label="Search" data-bs-toggle="tooltip" data-bs-placement="top" title="Day range up to current day, e.g. 'all', '7'.">
         <button class="btn btn-outline-success rounded-pill" id="search-btn" type="submit">Search</button>
       </form>
     </div>
@@ -31,14 +32,12 @@
 
   <main>
     <!-- charts -->
-    <div id="charts">
-      <div class="row">
-        <div class="display-chart mt-4 col-md-6">
-          <div id="chart-vaccines"></div>
-        </div>
-        <div class="display-chart mt-4 col-md-6">
-          <div id="chart-deaths"></div>
-        </div>
+    <div id="charts" class="row">
+      <div class="display-chart mt-4 col-md-6">
+        <div id="chart-vaccines"></div>
+      </div>
+      <div class="display-chart mt-4 col-md-6">
+        <div id="chart-deaths"></div>
       </div>
     </div>
 
@@ -60,6 +59,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
     integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
     crossorigin="anonymous"></script>
+    <script src="scripts/charts.js"></script>
   <script src="scripts/script.js"></script>
 </body>
 
