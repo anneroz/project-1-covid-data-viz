@@ -1,3 +1,24 @@
-/* body {
-  background-color: mediumseagreen;
-} */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+body {
+  /* background-color: mediumseagreen; */
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.navbar {
+  height: 10vh;
+}
+
+#landing {
+  height: 90vh;
+}
+
+#landing-charts {
+  height: 80%;
+  background-color: mediumspringgreen;
+}
+
+#landing-text {
+  height: 20%;
+  background-color: mediumslateblue;
+}

@@ -17,35 +17,34 @@
 
 <body>
   <!-- nav bar -->
-  <nav class="navbar navbar-light bg-light">
+  <nav class="navbar navbar-light bg-light"> <!-- always 10vh of screen -->
     <div class="container-fluid">
-      <a class="navbar-brand">Navbar</a>
+      <a class="navbar-brand">Covid Data Viz (website title)</a>
       <form class="d-flex">
         <input class="form-control me-2" id="search-country" type="search" placeholder="Country..." aria-label="Search">
         <input class="form-control me-2" id="search-days" type="search" placeholder="Day range..." aria-label="Search">
-        <button class="btn btn-outline-success" id="search-btn" type="submit">Search</button>
+        <button class="btn btn-outline-success rounded-pill" id="search-btn" type="submit">Search</button>
       </form>
     </div>
   </nav>
 
   <!-- landing area -->
-  <div id="landing">
-    <div id="landing-text">
-      <h1>Covid Data Viz (website title)</h1>
-      <h2>Vaccinate, Don't Hesitate</h2>
-      <a href="" id="btn-info" class="btn btn-primary">More Info</a>
-      <a href="" id="btn-register" class="btn btn-secondary">Register Now</a>
-    </div>
-    <div id="landing-charts">
+  <div id="landing"> <!-- always 90vh of screen -->
+    <div id="landing-charts"> <!-- 80% of landing div -->
       <!-- charts -->
       <div id="chart-container" class="row">
-        <div class="display-chart col-12 col-md-6">
+        <div class="display-chart mt-4">
           <div id="chart-vaccines"></div>
         </div>
-        <div class="display-chart col-12 col-md-6">
+        <div class="display-chart mt-4">
           <div id="chart-deaths"></div>
         </div>
       </div>
+    </div>
+    <div id="landing-text" class="text-center"> <!-- 20% of landing div -->
+      <h2>Vaccinate, Don't Hesitate</h2>
+      <a href="" id="btn-register" class="btn btn-primary rounded-pill">Register Now</a>
+      <a href="" id="btn-info" class="btn btn-secondary rounded-pill">More Info</a>
     </div>
   </div>
 
