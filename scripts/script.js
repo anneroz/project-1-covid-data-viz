@@ -2,36 +2,17 @@
 
 // to store transformed raw data
 let vaccinesSeries = [];
-
-let vaccinesSeries2 = [
-    {
-        'x': "1/11/21",
-        'y': 900000,
-    },
-    {
-        'x': "1/12/21",
-        'y': 1000000,
-    },
-    {
-        'x': "1/13/21",
-        'y': 1000500,
-    },
-    {
-        'x': "1/14/21",
-        'y': 1000800,
-    },
-    {
-        'x': "1/15/21",
-        'y': 1001080,
-    }
-];
+let vaccinesSeries2 = [];
 
 let deathsSeries = [];
+let deathsSeries2 = [];
 
 // to store dates of vaccines cases after removing 0 cases
 let vaccinesDates = []
+let vaccinesDates2 = []
 
 let filteredDeathsSeries = [];
+let filteredDeathsSeries2 = [];
 
 //////////////////////////////////////////////////////////////////
 
@@ -76,34 +57,57 @@ function transformData(vaccineData, historicalData) {
     }
 }
 
+function transformData2(vaccineData, historicalData) {
+
+    for (let i in vaccineData.timeline) {
+        // remove all cases with 0 vaccinations
+        if (vaccineData.timeline[i].total !== 0) {
+            vaccinesSeries2.push({
+                'x': vaccineData.timeline[i].date,
+                'y': vaccineData.timeline[i].total
+            })
+        }
+    }
+
+    for (let i in historicalData.timeline.deaths) {
+        deathsSeries2.push({
+            'x': i,
+            'y': historicalData.timeline.deaths[i]
+        })
+    }
+
+    // vaccines raw data dates starts on 1 Dec 2020, deaths raw date dates starts on 22 Jan 2020
+    for (let datnum of vaccinesSeries2) {
+        vaccinesDates2.push(datnum.x);
+    }
+
+    for (let datnum of deathsSeries2) {
+        if (vaccinesDates2.includes(datnum.x)) {
+            filteredDeathsSeries2.push({
+                'x': datnum.x,
+                'y': datnum.y
+            })
+        }
+    }
+}
+
 // wait for all the DOM elements to be created, then load in the url
 window.addEventListener('DOMContentLoaded', async function () {
     let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
-    // let vaccinesTimeline2 = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/malaysia?lastdays=all&fullData=true");
     let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
-    // let historicalTimeline2 = await load("https://disease.sh/v3/covid-19/historical/malaysia?lastdays=all");
-
     transformData(vaccinesTimeline, historicalTimeline);
-
     console.log(vaccinesSeries);
+    console.log(filteredDeathsSeries);
+
+    let vaccinesTimeline2 = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/malaysia?lastdays=all&fullData=true");
+    let historicalTimeline2 = await load("https://disease.sh/v3/covid-19/historical/malaysia?lastdays=all");
+    transformData2(vaccinesTimeline2, historicalTimeline2);
     console.log(vaccinesSeries2);
+    console.log(filteredDeathsSeries2);
 
-    vaccinesChart.updateSeries(
-        [
-            {
-                data: vaccinesSeries
-            },
-            {
-                data: vaccinesSeries2
-            }
-
-        ]
-    )
-
-    deathsChart.updateSeries([{
-        data: filteredDeathsSeries
-    }])
-})
+    vaccinesChart.updateSeries([{ data: vaccinesSeries }, { data: vaccinesSeries2 }])
+    deathsChart.updateSeries([{ data: filteredDeathsSeries }, { data: filteredDeathsSeries2 }])
+});
 
 let searchButton = document.querySelector('#search-btn');
 searchButton.addEventListener('click', async (event) => {
