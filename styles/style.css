@@ -20,7 +20,3 @@ section {
   background-color: lightcoral;
   border: 2px solid black;
 }
-
-section:nth-child(1) {
-  background-color: cornflowerblue;
-}

@@ -66,7 +66,7 @@ let vaccinesOptions = {
         text: 'Historical Number of Vaccines Administered'
     },
     chart: {
-        id: 'line-vaccines',
+        id: 'area-vaccines',
         group: 'vaccinesVsDeaths',
         type: 'area',
         background: '#f4f4f4'
@@ -108,7 +108,7 @@ let deathsOptions = {
         text: 'Historical Number of Deaths'
     },
     chart: {
-        id: 'line-deaths',
+        id: 'area-deaths',
         group: 'vaccinesVsDeaths',
         type: 'area',
         background: '#f4f4f4'
