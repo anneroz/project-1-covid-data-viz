@@ -6,7 +6,7 @@ let vaccinesOptions = {
         {
             name: 'Vaccines',
             data: []
-        }
+        },
     ],
     title: {
         text: 'Historical Number of Vaccines Administered'
@@ -17,7 +17,7 @@ let vaccinesOptions = {
         type: 'area',
         background: '#f4f4f4'
     },
-    colors: ['#2ec4b6'],
+    colors: ['#001219', '#0A9396', '#E9D8A6'],
     fill: {
         type: "gradient",
         gradient: {
@@ -62,7 +62,7 @@ let deathsOptions = {
         type: 'area',
         background: '#f4f4f4'
     },
-    colors: ['#e71d36'],
+    colors: ['#9B2226', '#BB3E03', '#EE9B00'],
     fill: {
         type: "gradient",
         gradient: {

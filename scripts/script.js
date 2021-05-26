@@ -2,6 +2,30 @@
 
 // to store transformed raw data
 let vaccinesSeries = [];
+
+let vaccinesSeries2 = [
+    {
+        'x': "1/11/21",
+        'y': 900000,
+    },
+    {
+        'x': "1/12/21",
+        'y': 1000000,
+    },
+    {
+        'x': "1/13/21",
+        'y': 1000500,
+    },
+    {
+        'x': "1/14/21",
+        'y': 1000800,
+    },
+    {
+        'x': "1/15/21",
+        'y': 1001080,
+    }
+];
+
 let deathsSeries = [];
 
 // to store dates of vaccines cases after removing 0 cases
@@ -55,12 +79,26 @@ function transformData(vaccineData, historicalData) {
 // wait for all the DOM elements to be created, then load in the url
 window.addEventListener('DOMContentLoaded', async function () {
     let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
+    // let vaccinesTimeline2 = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/malaysia?lastdays=all&fullData=true");
     let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
+    // let historicalTimeline2 = await load("https://disease.sh/v3/covid-19/historical/malaysia?lastdays=all");
+
     transformData(vaccinesTimeline, historicalTimeline);
 
-    vaccinesChart.updateSeries([{
-        data: vaccinesSeries
-    }])
+    console.log(vaccinesSeries);
+    console.log(vaccinesSeries2);
+
+    vaccinesChart.updateSeries(
+        [
+            {
+                data: vaccinesSeries
+            },
+            {
+                data: vaccinesSeries2
+            }
+
+        ]
+    )
 
     deathsChart.updateSeries([{
         data: filteredDeathsSeries
