@@ -88,6 +88,9 @@ let vaccinesOptions = {
         labels: {
             minWidth: 40
         }
+    },
+    xaxis: {
+        type: 'datetime'
     }
 };
 
@@ -130,6 +133,9 @@ let deathsOptions = {
         labels: {
             minWidth: 40
         }
+    },
+    xaxis: {
+        type: 'datetime'
     }
 };
 
