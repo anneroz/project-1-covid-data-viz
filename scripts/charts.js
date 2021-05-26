@@ -87,18 +87,3 @@ let deathsOptions = {
 
 let deathsChart = new ApexCharts(document.querySelector("#chart-deaths"), deathsOptions);
 deathsChart.render();
-
-// wait for all the DOM elements to be created, then load in the url
-window.addEventListener('DOMContentLoaded', async function () {
-    let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
-    let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
-    transformData(vaccinesTimeline, historicalTimeline);
-
-    vaccinesChart.updateSeries([{
-        data: vaccinesSeries
-    }])
-
-    deathsChart.updateSeries([{
-        data: filteredDeathsSeries
-    }])
-})
