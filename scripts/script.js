@@ -68,10 +68,22 @@ let vaccinesOptions = {
     chart: {
         id: 'line-vaccines',
         group: 'vaccinesVsDeaths',
-        type: 'line',
+        type: 'area',
         background: '#f4f4f4'
     },
-    colors: ['#008FFB'],
+    colors: ['#2ec4b6'],
+    fill: {
+        type: "gradient",
+        gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.7,
+            opacityTo: 0.9,
+            stops: [0, 90, 100]
+        }
+    },
+    dataLabels: {
+        enabled: false
+    },
     yaxis: {
         labels: {
             minWidth: 40
@@ -98,10 +110,22 @@ let deathsOptions = {
     chart: {
         id: 'line-deaths',
         group: 'vaccinesVsDeaths',
-        type: 'line',
+        type: 'area',
         background: '#f4f4f4'
     },
-    colors: ['#546E7A'],
+    colors: ['#e71d36'],
+    fill: {
+        type: "gradient",
+        gradient: {
+            shadeIntensity: 1,
+            opacityFrom: 0.7,
+            opacityTo: 0.9,
+            stops: [0, 90, 100]
+        }
+    },
+    dataLabels: {
+        enabled: false
+    },
     yaxis: {
         labels: {
             minWidth: 40
