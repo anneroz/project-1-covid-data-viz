@@ -13,10 +13,26 @@ body {
   z-index: 1;
 }
 
-#landing-text {
-  background-color: lightskyblue;
+.db-box {
+  background-color: lightpink;
 }
 
-main {
-  height: 90vh;
+.reg-container {
+  background-color: lightgreen;
+}
+
+.reg-box {
+  background-color: lightyellow;
+  margin: 10px auto;
+  width: 300px;
+  height: 250px;
+}
+
+/* responsive */
+
+@media screen and (min-width: 768px) {
+  .reg-container {
+    background: turquoise;
+    display: flex;
+  }
 }

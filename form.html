@@ -1,52 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
+
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="styles/style.css">
 </head>
+
 <body>
+    <header>
+        <h1>Register for Vaccination</h1>
+    </header>
+
     <!-- form -->
-    <div id="reg-container">
+    <div class="reg-container">
         <div class="reg-box">
             <h3>1. Mobile Number</h3>
             <p>手机号码 / Nombor telefon / கைபேசி எண்</p>
-            <p>We will be in touch with you on vaccination appointments via SMS, so please ensure that you key in your phone number accurately.</p>
-            <input type="text" name="reg-num" id="reg-num">
+            <p>We will be in touch with you on vaccination appointments via SMS, so please ensure that you key in your
+                phone number accurately.</p>
+            <input type="text" name="reg-num" id="reg-num" required>
         </div>
         <div class="reg-box">
             <h3>2. Name</h3>
             <p>名字 / Nama / பெயர்</p>
-            <input type="text" name="reg-name" id="reg-name">
+            <input type="text" name="reg-name" id="reg-name" required>
         </div>
+    </div>
+    <div class="reg-container">
         <div class="reg-box">
             <h3>3. NRIC</h3>
             <p>Please ensure that the NRIC you provide is accurate</p>
-            <input type="text" name="reg-nric" id="reg-nric">
+            <input type="text" name="reg-nric" id="reg-nric" required>
         </div>
         <div class="reg-box">
             <h3>4. Date of Birth</h3>
             <p>生日 / Tarikh lahir / பிறந்த தேதி</p>
             <p>Please ensure that the Date of Birth you provide is accurate</p>
             <p>Please type in DD MMM YYYY, e.g. 09 Aug 1965</p>
-            <input type="date" name="reg-dob" id="reg-dob">
+            <input type="date" name="reg-dob" id="reg-dob" required>
         </div>
+    </div>
+    <div class="reg-container">
         <div class="reg-box">
             <h3>5. Preferred Language</h3>
             <p>首选语言 / Bahasa pilihan / விருப்பமான மொழி</p>
             <p>Please select your preferred language for future notifications</p>
-            <select name="reg-language" id="reg-language">
+            <select name="reg-language" id="reg-language" required>
                 <option selected></option>
                 <option value="english">English</option>
                 <option value="mandarin">Mandarin</option>
                 <option value="malay">Malay</option>
                 <option value="tamil">Tamil</option>
             </select>
+            <button type="submit">Submit</button>
         </div>
         <div class="reg-box">
-            <button type="submit"></button>
+            <div></div>
         </div>
     </div>
 </body>
+
 </html>

@@ -50,13 +50,26 @@ function transformData(vaccineData, historicalData) {
 window.addEventListener('DOMContentLoaded', async function () {
     let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/china?lastdays=all&fullData=true");
     let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/china?lastdays=all");
+
     transformData(vaccinesTimeline, historicalTimeline);
 
     vaccinesChart.updateSeries([{ data: vaccinesSeries }])
     deathsChart.updateSeries([{ data: filteredDeathsSeries }])
+
+    let totals = await load("https://disease.sh/v3/covid-19/countries/sgp?strict=true");
+
+    // store today values
+    let casesNew = totals.todayCases;
+    // store active values
+    let casesActive = totals.active;
+    // store recovered values
+    let casesRecovered = totals.recovered;
+
+    console.log(casesNew, casesActive, casesRecovered);
+
 });
 
-let searchButton = document.querySelector('.btn');
+let searchButton = document.querySelector('#btn-search');
 searchButton.addEventListener('click', async (event) => {
     event.preventDefault();
 
