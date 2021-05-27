@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded', async function () {
     deathsChart.updateSeries([{data: filteredDeathsSeries}])
 });
 
-let searchButton = document.querySelector('#search-btn');
+let searchButton = document.querySelector('.btn');
 searchButton.addEventListener('click', async (event) => {
     event.preventDefault();
 
@@ -66,8 +66,8 @@ searchButton.addEventListener('click', async (event) => {
     vaccinesDates = [];
     filteredDeathsSeries = [];
 
-    let userCountrySearch = document.querySelector('#search-country').value;
-    let userDaysSearch = document.querySelector('#search-days').value;
+    let userCountrySearch = document.querySelector('.form-select').value;
+    let userDaysSearch = document.querySelector('.form-control').value;
 
     // store new api url based on user's country search
     let newVaccinesUrl = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${userCountrySearch}?lastdays=${userDaysSearch}&fullData=true`;
