@@ -52,8 +52,8 @@ window.addEventListener('DOMContentLoaded', async function () {
     let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/china?lastdays=all");
     transformData(vaccinesTimeline, historicalTimeline);
 
-    vaccinesChart.updateSeries([{data: vaccinesSeries}])
-    deathsChart.updateSeries([{data: filteredDeathsSeries}])
+    vaccinesChart.updateSeries([{ data: vaccinesSeries }])
+    deathsChart.updateSeries([{ data: filteredDeathsSeries }])
 });
 
 let searchButton = document.querySelector('.btn');
@@ -76,10 +76,6 @@ searchButton.addEventListener('click', async (event) => {
     // load new raw data based on user's country search
     let newVaccinesTimeline = await load(newVaccinesUrl);
     let newDeathsTimeline = await load(newDeathsUrl);
-
-    //////////////////////////////////////////
-    // how to handle erroreous user search????
-    //////////////////////////////////////////
 
     transformData(newVaccinesTimeline, newDeathsTimeline);
 

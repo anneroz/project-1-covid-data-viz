@@ -2,10 +2,15 @@
 
 body {
   font-family: 'Roboto Condensed', sans-serif;
+  background-color: lightgrey;
 }
 
 .navbar {
   height: 10vh;
+}
+
+#navbarSupportedContent {
+  z-index: 1;
 }
 
 #landing-text {
@@ -14,9 +19,4 @@ body {
 
 main {
   height: 90vh;
-}
-
-section {
-  background-color: lightcoral;
-  border: 2px solid black;
 }
