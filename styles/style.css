@@ -13,6 +13,21 @@ body {
   z-index: 1;
 }
 
+.chart-container {
+  background-color: lightseagreen;
+}
+
+.chart-box {
+  background-color: lime;
+  margin: 0 auto;
+  width: 90%;
+  height: 250px;
+}
+
+#chart-vaccines, #chart-deaths{
+  padding: 10px 0;
+}
+
 .db-box {
   background-color: lightpink;
 }
@@ -24,15 +39,32 @@ body {
 .reg-box {
   background-color: lightyellow;
   margin: 10px auto;
-  width: 300px;
+  width: 90%;
   height: 250px;
 }
 
-/* responsive */
-
+/* iPad */
 @media screen and (min-width: 768px) {
+  .chart-box {
+    width: 70%;
+    height: 350px;
+  }
   .reg-container {
     background: turquoise;
     display: flex;
   }
+  .reg-box {
+    width: 40%;
+  }
+}
+
+/* laptop */
+@media screen and (min-width: 1200px) {
+  .chart-container {
+    height: 470px;
+    display: flex;
+  }
+  .reg-container {
+    background: lightsalmon;
+  };
 }
