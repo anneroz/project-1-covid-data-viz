@@ -13,6 +13,7 @@ let vaccinesOptions = {
     },
     chart: {
         id: 'area-vaccines',
+        height: '100%',
         group: 'vaccinesVsDeaths',
         type: 'area',
         background: '#f4f4f4',
@@ -59,6 +60,7 @@ let deathsOptions = {
     },
     chart: {
         id: 'area-deaths',
+        height: '100%',
         group: 'vaccinesVsDeaths',
         type: 'area',
         background: '#f4f4f4',

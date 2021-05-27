@@ -24,8 +24,8 @@ body {
   height: 250px;
 }
 
-#chart-vaccines, #chart-deaths{
-  padding: 10px 0;
+#cta > h2, #cta-buttons {
+  margin: 0 auto;
 }
 
 .db-box {
@@ -66,5 +66,5 @@ body {
   }
   .reg-container {
     background: lightsalmon;
-  };
+  }
 }
