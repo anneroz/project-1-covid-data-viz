@@ -30,8 +30,8 @@
             <a class="nav-link" href="#">Link</a>
           </li>
         </ul>
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Select a country...</option>
+        <select class="form-select select-country" aria-label="Default select example">
+          <option selected>Select country...</option>
           <option value="AFG">Afghanistan</option>
           <option value="ALA">Åland Islands</option>
           <option value="ALB">Albania</option>
@@ -283,7 +283,7 @@
           <option value="ZWE">Zimbabwe</option>
         </select>
         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Enter day range..." aria-label="Search">
+          <input class="form-control me-2 search-day" type="search" placeholder="Enter day range..." aria-label="Search">
           <button class="btn btn-outline-success" id="btn-search" type="submit">Search</button>
         </form>
       </div>
@@ -300,15 +300,6 @@
       <div id="chart-deaths"></div>
     </div>
   </div>
-  <!-- country 2 -->
-  <div class="chart-container">
-    <div class="chart-box">
-      <div id="chart-vaccines2"></div>
-    </div>
-    <div class="chart-box">
-      <div id="chart-deaths2"></div>
-    </div>
-  </div>
 
   <!-- register -->
   <section>
@@ -320,24 +311,6 @@
       </div>
     </div>
   </section>
-
-  <!-- dashboard -->
-  <!-- <section>
-    <div id="db-container">
-      <div class="db-box">
-        <h3>Today Cases</h3>
-        <p id="db-today">Number</p>
-      </div>
-      <div class="db-box">
-        <h3>Active</h3>
-        <p id="db-active">Number</p>
-      </div>
-      <div class="db-box">
-        <h3>Recovered</h3>
-        <p id="db-recovered">Number</p>
-      </div>
-    </div>
-  </section> -->
 
   <!-- scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
