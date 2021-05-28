@@ -8,9 +8,6 @@ let vaccinesOptions = {
             data: []
         },
     ],
-    title: {
-        text: 'Historical Number of Vaccines Administered'
-    },
     chart: {
         id: 'area-vaccines',
         height: '100%',
@@ -35,6 +32,9 @@ let vaccinesOptions = {
     yaxis: {
         labels: {
             minWidth: 40
+        },
+        title: {
+            text: "Vaccines (Cummulative)"
         }
     },
     xaxis: {
@@ -45,6 +45,9 @@ let vaccinesOptions = {
 let vaccinesChart = new ApexCharts(document.querySelector("#chart-vaccines"), vaccinesOptions);
 vaccinesChart.render();
 
+let vaccinesChart2 = new ApexCharts(document.querySelector("#chart-vaccines2"), vaccinesOptions);
+vaccinesChart2.render();
+
 let deathsOptions = {
     noData: {
         text: 'Please wait...loading data.'
@@ -52,12 +55,12 @@ let deathsOptions = {
     series: [
         {
             name: 'Deaths',
-            data: []
+            data: [],
         }
     ],
-    title: {
-        text: 'Historical Number of Deaths'
-    },
+    // title: {
+    //     text: 'Deaths (Cummulative)'
+    // },
     chart: {
         id: 'area-deaths',
         height: '100%',
@@ -82,6 +85,9 @@ let deathsOptions = {
     yaxis: {
         labels: {
             minWidth: 40
+        },
+        title: {
+            text: "Deaths (Cummulative)"
         }
     },
     xaxis: {
@@ -91,3 +97,6 @@ let deathsOptions = {
 
 let deathsChart = new ApexCharts(document.querySelector("#chart-deaths"), deathsOptions);
 deathsChart.render();
+
+let deathsChart2 = new ApexCharts(document.querySelector("#chart-deaths2"), deathsOptions);
+deathsChart2.render();

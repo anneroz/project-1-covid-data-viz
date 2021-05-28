@@ -24,8 +24,9 @@ body {
   height: 250px;
 }
 
-#cta > h2, #cta-buttons {
-  margin: 0 auto;
+#cta {
+  text-align: center;
+  padding: 10px 0;
 }
 
 .db-box {
@@ -62,7 +63,8 @@ body {
 @media screen and (min-width: 1200px) {
   .chart-container {
     height: 470px;
-    display: flex;
+    display: flex;    
+    align-items: center;
   }
   .reg-container {
     background: lightsalmon;
