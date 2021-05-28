@@ -13,7 +13,8 @@ let vaccinesOptions = {
         height: '100%',
         group: 'vaccinesVsDeaths',
         type: 'area',
-        background: '#f4f4f4',
+        foreColor: '#fff',
+        background: '#495057',
         fontFamily: 'Roboto Condensed, sans-serif'
     },
     colors: ['#0AD1D1'],
@@ -45,9 +46,6 @@ let vaccinesOptions = {
 let vaccinesChart = new ApexCharts(document.querySelector("#chart-vaccines"), vaccinesOptions);
 vaccinesChart.render();
 
-let vaccinesChart2 = new ApexCharts(document.querySelector("#chart-vaccines2"), vaccinesOptions);
-vaccinesChart2.render();
-
 let deathsOptions = {
     noData: {
         text: 'Please wait...loading data.'
@@ -66,7 +64,8 @@ let deathsOptions = {
         height: '100%',
         group: 'vaccinesVsDeaths',
         type: 'area',
-        background: '#f4f4f4',
+        foreColor: '#fff',
+        background: '#495057',
         fontFamily: 'Roboto Condensed, sans-serif'
     },
     colors: ['#D10A0A'],
@@ -97,6 +96,3 @@ let deathsOptions = {
 
 let deathsChart = new ApexCharts(document.querySelector("#chart-deaths"), deathsOptions);
 deathsChart.render();
-
-let deathsChart2 = new ApexCharts(document.querySelector("#chart-deaths2"), deathsOptions);
-deathsChart2.render();

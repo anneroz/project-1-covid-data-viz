@@ -2,25 +2,25 @@
 
 body {
   font-family: 'Roboto Condensed', sans-serif;
-  background-color: lightgrey;
+  background-color: #343a40;
 }
 
-.navbar {
+/* .navbar {
   height: 10vh;
 }
 
 #navbarSupportedContent {
   z-index: 1;
-}
+} */
 
-.chart-container {
-  background-color: lightseagreen;
-}
+/* .chart-container {
+  background: #343A40;
+} */
 
 .chart-box {
-  background-color: lime;
+  /* background-color: lime; */
   margin: 0 auto;
-  width: 90%;
+  /* width: 90%; */
   height: 250px;
 }
 
@@ -29,16 +29,11 @@ body {
   padding: 10px 0;
 }
 
-.db-box {
-  background-color: lightpink;
-}
-
-.reg-container {
-  background-color: lightgreen;
+#cta > h2 {
+  color: #fff;
 }
 
 .reg-box {
-  background-color: lightyellow;
   margin: 10px auto;
   width: 90%;
   height: 250px;
@@ -51,7 +46,6 @@ body {
     height: 350px;
   }
   .reg-container {
-    background: turquoise;
     display: flex;
   }
   .reg-box {
@@ -65,8 +59,5 @@ body {
     height: 470px;
     display: flex;    
     align-items: center;
-  }
-  .reg-container {
-    background: lightsalmon;
   }
 }
