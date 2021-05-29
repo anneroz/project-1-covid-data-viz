@@ -20,7 +20,11 @@
 <img src='mockups/mockup_index.JPG' class='img-fluid'>
 <img src='mockups/mockup_form.JPG' class='img-fluid'>
 </div>
+* Five planes of UI/UX: For the graphs, I decided to go with red for deaths as it is a colour that is often associated with warnings, and blue for the vaccinations because I want to user to associate vaccination with a feeling of calmness and not something to be afraid of. The button to visit the register page stands out, and it is a call to action to the user to click it. The colour of the entire index page is dark, because this is a matter to be taken seriously.
 
+### Features
+* User is able to search for specific country, and limit the day range. There is a zoom function on the graph, but the search will be more specific.
+* The graphs display information that is obtained from APIs, therefore, there is sometimes a delay in actual cases for the day(s). There is sometimes also discrepencies in the reporting of the numbers for the various countries, so the information might not be accurate due to this.
 
 
 Target audience:
