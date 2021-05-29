@@ -26,7 +26,17 @@ body {
 }
 
 #cta-button {
-  padding-top: 10px;
+  padding-top: 15px;
+}
+
+#reg-page {
+  background-color: #fff;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#reg-header {
+  text-align: center;
 }
 
 .reg-box {
