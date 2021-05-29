@@ -283,7 +283,8 @@
           <option value="ZWE">Zimbabwe</option>
         </select>
         <form class="d-flex">
-          <input class="form-control me-2 search-day" type="search" placeholder="Enter day range..." aria-label="Search">
+          <input class="form-control me-2 search-day" type="search" placeholder="Enter day range..."
+            aria-label="Search">
           <button class="btn btn-outline-success" id="btn-search" type="submit">Search</button>
         </form>
       </div>
@@ -292,19 +293,24 @@
 
   <!-- charts -->
   <div class="chart-container">
-    <h1 class="chart-title">Vaccines</h1>
-    <div class="chart-box">
-      <div id="chart-vaccines"></div>
+    <div class="chart-outer-box">
+      <h1 class="chart-title">Vaccines</h1>
+      <div class="chart-box">
+        <div id="chart-vaccines"></div>
+      </div>
     </div>
-    <h1 class="chart-title">Deaths</h1>
-    <div class="chart-box">
-      <div id="chart-deaths"></div>
+
+    <div class="chart-outer-box">
+      <h1 class="chart-title">Deaths</h1>
+      <div class="chart-box">
+        <div id="chart-deaths"></div>
+      </div>
     </div>
   </div>
 
   <!-- register -->
-  <section>
-    <div id="cta">
+  <section id="cta">
+    <div id="cta-container">
       <h2>Register for Vaccination</h2>
       <div id="cta-buttons">
         <a href="form.html" target="_blank" class="btn btn-primary rounded-pill">Click Here</a>

@@ -5,32 +5,28 @@ body {
   background-color: #343a40;
 }
 
-/* .navbar {
-  height: 10vh;
+.chart-title {
+  color: #fff;
+  text-align: center;
+  padding: 10px;
 }
 
-#navbarSupportedContent {
-  z-index: 1;
-} */
-
-/* .chart-container {
-  background: #343A40;
-} */
-
 .chart-box {
-  /* background-color: lime; */
   margin: 0 auto;
-  /* width: 90%; */
   height: 250px;
 }
 
-#cta {
+#cta-container {
   text-align: center;
-  padding: 10px 0;
+  padding: 15px;
 }
 
-#cta > h2 {
+#cta-container > h2 {
   color: #fff;
+}
+
+#cta-button {
+  padding-top: 10px;
 }
 
 .reg-box {
@@ -42,7 +38,6 @@ body {
 /* iPad */
 @media screen and (min-width: 768px) {
   .chart-box {
-    width: 70%;
     height: 350px;
   }
   .reg-container {
@@ -56,8 +51,15 @@ body {
 /* laptop */
 @media screen and (min-width: 1200px) {
   .chart-container {
-    height: 470px;
-    display: flex;    
-    align-items: center;
+    display: flex;
+    height: 70vh;
+  }
+  .chart-outer-box {
+    width: 50%;
+    height: 600px;
+  }
+  .chart-box {
+    width: 80%;
+    height: 80%;
   }
 }
