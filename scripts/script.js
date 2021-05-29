@@ -73,3 +73,35 @@ function transformData2(vaccineData, historicalData) {
     }
 }
 
+function transformData3(vaccineData, historicalData) {
+    for (let eachProp in vaccineData.timeline) {
+        // remove all cases with 0 vaccinations
+        if (vaccineData.timeline[eachProp].total !== 0) {
+            vaccinesSeries3.push({
+                'x': vaccineData.timeline[eachProp].date,
+                'y': vaccineData.timeline[eachProp].total
+            })
+        }
+    }
+
+    for (let eachProp in historicalData.timeline.deaths) {
+        deathsSeries3.push({
+            'x': eachProp,
+            'y': historicalData.timeline.deaths[eachProp]
+        })
+    }
+
+    // vaccines raw data dates starts on 1 Dec 2020, deaths raw date dates starts on 22 Jan 2020
+    for (let eachIndex of vaccinesSeries3) {
+        vaccinesDates3.push(eachIndex.x);
+    }
+
+    for (let eachIndex of deathsSeries3) {
+        if (vaccinesDates3.includes(eachIndex.x)) {
+            filteredDeathsSeries3.push({
+                'x': eachIndex.x,
+                'y': eachIndex.y
+            })
+        }
+    }
+}

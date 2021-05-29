@@ -8,6 +8,11 @@ let vaccinesSeries2 = [];
 let deathsSeries2 = [];
 let vaccinesDates2 = [];
 let filteredDeathsSeries2 = [];
+
+let vaccinesSeries3 = [];
+let deathsSeries3 = [];
+let vaccinesDates3 = [];
+let filteredDeathsSeries3 = [];
 //////////////////////////////////////////////////////////////////
 
 let vaccinesOptions = {
@@ -21,6 +26,10 @@ let vaccinesOptions = {
         },
         {
             name: 'Country 2',
+            data: []
+        },
+        {
+            name: 'Country 3',
             data: []
         }
     ],
@@ -83,6 +92,10 @@ let deathsOptions = {
         {
             name: 'Country 2',
             data: [],
+        },
+        {
+            name: 'Country 3',
+            data: [],
         }
     ],
     chart: {
@@ -137,14 +150,18 @@ window.addEventListener('DOMContentLoaded', async function () {
     let vaccinesTimeline = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/sgp?lastdays=all&fullData=true");
     let historicalTimeline = await load("https://disease.sh/v3/covid-19/historical/sgp?lastdays=all");
 
-    let vaccinesTimeline2 = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/usa?lastdays=all&fullData=true");
-    let historicalTimeline2 = await load("https://disease.sh/v3/covid-19/historical/usa?lastdays=all");
+    let vaccinesTimeline2 = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/malaysia?lastdays=all&fullData=true");
+    let historicalTimeline2 = await load("https://disease.sh/v3/covid-19/historical/malaysia?lastdays=all");
+
+    let vaccinesTimeline3 = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/indonesia?lastdays=all&fullData=true");
+    let historicalTimeline3 = await load("https://disease.sh/v3/covid-19/historical/indonesia?lastdays=all");
 
     transformData(vaccinesTimeline, historicalTimeline);
     transformData2(vaccinesTimeline2, historicalTimeline2);
+    transformData3(vaccinesTimeline3, historicalTimeline3);
 
-    vaccinesChart.updateSeries([{ data: vaccinesSeries }, { data: vaccinesSeries2 }]);
-    deathsChart.updateSeries([{ data: filteredDeathsSeries }, { data: filteredDeathsSeries2 }]);
+    vaccinesChart.updateSeries([{ data: vaccinesSeries }, { data: vaccinesSeries2 }, { data: vaccinesSeries3 }]);
+    deathsChart.updateSeries([{ data: filteredDeathsSeries }, { data: filteredDeathsSeries2 }, { data: filteredDeathsSeries3 }]);
 });
 
 let searchButton = document.querySelector('#btn-search');
