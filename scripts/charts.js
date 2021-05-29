@@ -43,35 +43,15 @@ let vaccinesOptions = {
         background: '#495057',
         fontFamily: 'Roboto Condensed, sans-serif'
     },
-    // colors: ['#0AD1D1'],
-    // fill: {
-    //     type: "gradient",
-    //     gradient: {
-    //         shadeIntensity: 1,
-    //         opacityFrom: 0.7,
-    //         opacityTo: 0.9,
-    //         stops: [0, 90, 100]
-    //     }
-    // },
     dataLabels: {
         enabled: false
     },
-    yaxis: [
-        {
+    yaxis: {
             labels: {
-                minWidth: 40
+                minWidth: 0
             },
-            title: {
-                text: "Vaccines (Cummulative)"
-            }
+            logarithmic: true
         },
-        {
-            labels: {
-                minWidth: 40
-            },
-            opposite: true
-        }
-    ],
     xaxis: {
         type: 'datetime'
     }
@@ -108,35 +88,15 @@ let deathsOptions = {
         background: '#495057',
         fontFamily: 'Roboto Condensed, sans-serif'
     },
-    // colors: ['#D10A0A'],
-    // fill: {
-    //     type: "gradient",
-    //     gradient: {
-    //         shadeIntensity: 1,
-    //         opacityFrom: 0.7,
-    //         opacityTo: 0.9,
-    //         stops: [0, 90, 100]
-    //     }
-    // },
     dataLabels: {
         enabled: false
     },
-    yaxis: [
-        {
+    yaxis: {
             labels: {
-                minWidth: 40
+                minWidth: 0
             },
-            title: {
-                text: "Deaths (Cummulative)"
-            }
+            logarithmic: true
         },
-        {
-            labels: {
-                minWidth: 40
-            },
-            opposite: true
-        }
-    ],
     xaxis: {
         type: 'datetime'
     }
