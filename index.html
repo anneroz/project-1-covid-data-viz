@@ -19,16 +19,16 @@
   <!-- nav bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Covid-19 VacTracker</a>
+      <a class="navbar-brand" href="#">Covid-19 Vaccination Tracker</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
-          </li>
+          </li> -->
         </ul>
         <select class="form-select select-country" aria-label="Default select example">
           <option selected>Select country...</option>
@@ -283,9 +283,10 @@
           <option value="ZWE">Zimbabwe</option>
         </select>
         <form class="d-flex">
-          <input class="form-control me-2 search-day" type="search" placeholder="Enter day range..."
-            aria-label="Search">
-          <button class="btn btn-outline-success" id="btn-search" type="submit">Search</button>
+          <input class="form-control me-2 search-day" type="search" placeholder="Number of Days Up to Current Day..." aria-label="Search"
+            data-bs-toggle="tooltip" data-bs-placement="bottom"
+            title="Enter day range up to current day. E.g. 'all', '7', '14'.">
+          <button class="btn btn-success btn-outline-light" id="btn-search" type="submit">Search</button>
         </form>
       </div>
     </div>
