@@ -46,12 +46,25 @@ let vaccinesOptions = {
     dataLabels: {
         enabled: false
     },
-    yaxis: {
+    yaxis: [
+        {
             labels: {
-                minWidth: 0
-            },
-            logarithmic: true
+                minWidth: 10
+            }
         },
+        {
+            labels: {
+                minWidth: 10
+            },
+            opposite: true
+        },
+        {
+            labels: {
+                minWidth: 10
+            },
+            opposite: true
+        }
+    ],
     xaxis: {
         type: 'datetime'
     }
@@ -91,12 +104,27 @@ let deathsOptions = {
     dataLabels: {
         enabled: false
     },
-    yaxis: {
+    yaxis: [
+        {
             labels: {
-                minWidth: 0
-            },
-            logarithmic: true
+                minWidth: 10
+            }
         },
+        {
+            labels: {
+                minWidth: 10
+            },
+            opposite: {
+                opposite: true
+            }
+        },
+        {
+            labels: {
+                minWidth: 10
+            },
+            opposite: true
+        }
+    ],
     xaxis: {
         type: 'datetime'
     }
@@ -125,31 +153,83 @@ window.addEventListener('DOMContentLoaded', async function () {
 });
 
 let searchButton = document.querySelector('#btn-search');
-searchButton.addEventListener('click', async () => {
+searchButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    
     // clear existing data
     vaccinesSeries = [];
     deathsSeries = [];
     vaccinesDates = [];
     filteredDeathsSeries = [];
 
-    let userCountrySearch = document.querySelector('.select-country').value;
+    vaccinesSeries2 = [];
+    deathsSeries2 = [];
+    vaccinesDates2 = [];
+    filteredDeathsSeries2 = [];
+
+    vaccinesSeries3 = [];
+    deathsSeries3 = [];
+    vaccinesDates3 = [];
+    filteredDeathsSeries3 = [];
+
+    let userCountrySearch = document.querySelector('#select-country').value;
     let userDaysSearch = document.querySelector('.search-day').value;
+
+    let userCountrySearch2 = document.querySelector('#select-country2').value;
+    // let userDaysSearch2 = document.querySelector('.search-day').value;
+
+    let userCountrySearch3 = document.querySelector('#select-country3').value;
+    // let userDaysSearch3 = document.querySelector('.search-day').value;
 
     // store new api url based on user's country search
     let newVaccinesUrl = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${userCountrySearch}?lastdays=${userDaysSearch}&fullData=true`;
     let newDeathsUrl = `https://disease.sh/v3/covid-19/historical/${userCountrySearch}?lastdays=${userDaysSearch}`;
 
+    let newVaccinesUrl2 = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${userCountrySearch2}?lastdays=${userDaysSearch}&fullData=true`;
+    let newDeathsUrl2 = `https://disease.sh/v3/covid-19/historical/${userCountrySearch2}?lastdays=${userDaysSearch}`;
+
+    let newVaccinesUrl3 = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${userCountrySearch3}?lastdays=${userDaysSearch}&fullData=true`;
+    let newDeathsUrl3 = `https://disease.sh/v3/covid-19/historical/${userCountrySearch3}?lastdays=${userDaysSearch}`;
+
     // load new raw data based on user's country search
     let newVaccinesTimeline = await load(newVaccinesUrl);
     let newDeathsTimeline = await load(newDeathsUrl);
 
+    let newVaccinesTimeline2 = await load(newVaccinesUrl2);
+    let newDeathsTimeline2 = await load(newDeathsUrl2);
+
+    let newVaccinesTimeline3 = await load(newVaccinesUrl3);
+    let newDeathsTimeline3 = await load(newDeathsUrl3);
+
     transformData(newVaccinesTimeline, newDeathsTimeline);
+    transformData2(newVaccinesTimeline2, newDeathsTimeline2);
+    transformData3(newVaccinesTimeline3, newDeathsTimeline3);
 
-    vaccinesChart.updateSeries([{
-        data: vaccinesSeries
-    }])
+    vaccinesChart.updateSeries(
+        [
+            {
+                data: vaccinesSeries
+            },
+            {
+                data: vaccinesSeries2
+            },
+            {
+                data: vaccinesSeries3
+            }
+        ]
+    )
 
-    deathsChart.updateSeries([{
-        data: filteredDeathsSeries
-    }])
+    deathsChart.updateSeries(
+        [
+            {
+                data: filteredDeathsSeries
+            },
+            {
+                data: filteredDeathsSeries2
+            },
+            {
+                data: filteredDeathsSeries3
+            }
+        ]
+    )
 })
