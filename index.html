@@ -25,11 +25,6 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li> -->
-        </ul>
         <select class="form-select my-2 me-2" id="select-country" aria-label="Default select example">
           <option selected>Select country...</option>
           <option value="AFG">Afghanistan</option>
@@ -283,7 +278,7 @@
           <option value="ZWE">Zimbabwe</option>
         </select>
         <select class="form-select my-2 me-2" id="select-country2" aria-label="Default select example">
-          <option selected>Select country...</option>
+          <option selected>Select second country to compare...</option>
           <option value="AFG">Afghanistan</option>
           <option value="ALA">Åland Islands</option>
           <option value="ALB">Albania</option>
@@ -535,7 +530,7 @@
           <option value="ZWE">Zimbabwe</option>
         </select>
         <select class="form-select my-2 me-2" id="select-country3" aria-label="Default select example">
-          <option selected>Select country...</option>
+          <option selected>Select third country to compare...</option>
           <option value="AFG">Afghanistan</option>
           <option value="ALA">Åland Islands</option>
           <option value="ALB">Albania</option>
@@ -787,9 +782,9 @@
           <option value="ZWE">Zimbabwe</option>
         </select>
         <form class="d-flex">
-          <input class="form-control me-2 search-day" type="search" placeholder="Number of Days Up to Current Day..." aria-label="Search"
+          <input class="form-control me-2" id="search-day" type="search" placeholder="Days up to today, e.g. '7', '14', 'all'" aria-label="Search"
             data-bs-toggle="tooltip" data-bs-placement="bottom"
-            title="Enter day range up to current day. E.g. 'all', '7', '14'.">
+            title="e.g. '7', '14', 'all'">
           <button class="btn btn-success btn-outline-light" id="btn-search" type="submit">Search</button>
         </form>
       </div>
@@ -799,14 +794,14 @@
   <!-- charts -->
   <div class="chart-container">
     <div class="chart-outer-box">
-      <h1 class="chart-title">Vaccines</h1>
+      <h1 class="chart-title">Vaccines Administered (Cummulative)</h1>
       <div class="chart-box">
         <div id="chart-vaccines"></div>
       </div>
     </div>
 
     <div class="chart-outer-box">
-      <h1 class="chart-title">Deaths</h1>
+      <h1 class="chart-title">Deaths (Cummulative)</h1>
       <div class="chart-box">
         <div id="chart-deaths"></div>
       </div>

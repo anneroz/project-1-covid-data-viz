@@ -50,17 +50,26 @@ let vaccinesOptions = {
         {
             labels: {
                 minWidth: 10
+            },
+            title: {
+                text: 'country 1'
             }
         },
         {
             labels: {
                 minWidth: 10
             },
+            title: {
+                text: 'country 2'
+            },
             opposite: true
         },
         {
             labels: {
                 minWidth: 10
+            },
+            title: {
+                text: 'country 3'
             },
             opposite: true
         }
@@ -108,19 +117,26 @@ let deathsOptions = {
         {
             labels: {
                 minWidth: 10
+            },
+            title: {
+                text: 'country 1'
             }
         },
         {
             labels: {
                 minWidth: 10
             },
-            opposite: {
-                opposite: true
-            }
+            title: {
+                text: 'country 2'
+            },
+            opposite: true
         },
         {
             labels: {
                 minWidth: 10
+            },
+            title: {
+                text: 'country 3'
             },
             opposite: true
         }
@@ -173,13 +189,9 @@ searchButton.addEventListener('click', async (event) => {
     filteredDeathsSeries3 = [];
 
     let userCountrySearch = document.querySelector('#select-country').value;
-    let userDaysSearch = document.querySelector('.search-day').value;
-
     let userCountrySearch2 = document.querySelector('#select-country2').value;
-    // let userDaysSearch2 = document.querySelector('.search-day').value;
-
     let userCountrySearch3 = document.querySelector('#select-country3').value;
-    // let userDaysSearch3 = document.querySelector('.search-day').value;
+    let userDaysSearch = document.querySelector('#search-day').value;
 
     // store new api url based on user's country search
     let newVaccinesUrl = `https://disease.sh/v3/covid-19/vaccine/coverage/countries/${userCountrySearch}?lastdays=${userDaysSearch}&fullData=true`;
