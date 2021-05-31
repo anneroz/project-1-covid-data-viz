@@ -1,5 +1,3 @@
-
-
 // to read in url
 async function load(url) {
     let response = await axios.get(url);

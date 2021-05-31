@@ -1,4 +1,9 @@
 //////////////////////// global variables ////////////////////////
+let countries = [];
+let country1 = countries[0];
+let country2 = countries[1];
+let country3 = countries[2];
+
 let vaccinesSeries = [];
 let deathsSeries = [];
 let vaccinesDates = [];
@@ -171,7 +176,7 @@ window.addEventListener('DOMContentLoaded', async function () {
 let searchButton = document.querySelector('#btn-search');
 searchButton.addEventListener('click', async (event) => {
     event.preventDefault();
-    
+
     // clear existing data
     vaccinesSeries = [];
     deathsSeries = [];
@@ -217,31 +222,7 @@ searchButton.addEventListener('click', async (event) => {
     transformData2(newVaccinesTimeline2, newDeathsTimeline2);
     transformData3(newVaccinesTimeline3, newDeathsTimeline3);
 
-    vaccinesChart.updateSeries(
-        [
-            {
-                data: vaccinesSeries
-            },
-            {
-                data: vaccinesSeries2
-            },
-            {
-                data: vaccinesSeries3
-            }
-        ]
-    )
+    vaccinesChart.updateSeries([{data: vaccinesSeries}, {data: vaccinesSeries2}, {data: vaccinesSeries3}]);
 
-    deathsChart.updateSeries(
-        [
-            {
-                data: filteredDeathsSeries
-            },
-            {
-                data: filteredDeathsSeries2
-            },
-            {
-                data: filteredDeathsSeries3
-            }
-        ]
-    )
+    deathsChart.updateSeries([{data: filteredDeathsSeries}, {data: filteredDeathsSeries2}, {data: filteredDeathsSeries3}]);
 })

@@ -27,5 +27,12 @@
 * User is able to search for specific country from a dropdown menu, and limit the day range (anywhere between 'all' to the current day, i.e. '1')). Once both items are entered, and they click on the search button, the graph will update to display what they have searched for.
 * There is a zoom function on the graph, but the search will be more specific.
 * The graphs display information that is obtained from APIs, therefore, there is sometimes a delay in actual cases for the day(s). There is sometimes also discrepencies in the reporting of the numbers for the various countries, so the information might not be accurate due to this.
-* User is able to be redirected to a registration form, where they can submit their personal details.
+* User is able to be redirected to a mock registration form, where they can submit their personal details.
 * The graphs take up the entire width on small and medium sized devices. On large devices, both graphs will sit on one row.
+
+### Testing
+* Select any 3 countries from the dropdown, and enter day range, e.g. 'all', or a number, then click search to see the graph load up new information.
+
+### Deployment
+1. Hosting platform: Netlify
+2. Dependencies: Bootstrap and ApexCharts
