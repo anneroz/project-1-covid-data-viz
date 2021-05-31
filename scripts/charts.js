@@ -165,12 +165,104 @@ window.addEventListener('DOMContentLoaded', async function () {
     let vaccinesTimeline3 = await load("https://disease.sh/v3/covid-19/vaccine/coverage/countries/indonesia?lastdays=all&fullData=true");
     let historicalTimeline3 = await load("https://disease.sh/v3/covid-19/historical/indonesia?lastdays=all");
 
+    countries.push(vaccinesTimeline.country, vaccinesTimeline2.country, vaccinesTimeline3.country);
+
     transformData(vaccinesTimeline, historicalTimeline);
     transformData2(vaccinesTimeline2, historicalTimeline2);
     transformData3(vaccinesTimeline3, historicalTimeline3);
 
     vaccinesChart.updateSeries([{ data: vaccinesSeries }, { data: vaccinesSeries2 }, { data: vaccinesSeries3 }]);
     deathsChart.updateSeries([{ data: filteredDeathsSeries }, { data: filteredDeathsSeries2 }, { data: filteredDeathsSeries3 }]);
+
+    vaccinesChart.updateOptions({
+        series: [
+            {
+                name: countries[0],
+                data: vaccinesSeries
+            },
+            {
+                name: countries[1],
+                data: vaccinesSeries2
+            },
+            {
+                name: countries[2],
+                data: vaccinesSeries3
+            }
+        ],
+        yaxis: [
+            {
+                labels: {
+                    minWidth: 10
+                },
+                title: {
+                    text: countries[0]
+                }
+            },
+            {
+                labels: {
+                    minWidth: 10
+                },
+                title: {
+                    text: countries[1]
+                },
+                opposite: true
+            },
+            {
+                labels: {
+                    minWidth: 10
+                },
+                title: {
+                    text: countries[2]
+                },
+                opposite: true
+            }
+        ],
+    })
+
+    deathsChart.updateOptions({
+        series: [
+            {
+                name: 'Country 1111',
+                data: filteredDeathsSeries,
+            },
+            {
+                name: 'Country 2222',
+                data: filteredDeathsSeries2,
+            },
+            {
+                name: 'Country 33333',
+                data: filteredDeathsSeries3,
+            }
+        ],
+        yaxis: [
+            {
+                labels: {
+                    minWidth: 10
+                },
+                title: {
+                    text: countries[0]
+                }
+            },
+            {
+                labels: {
+                    minWidth: 10
+                },
+                title: {
+                    text: countries[1]
+                },
+                opposite: true
+            },
+            {
+                labels: {
+                    minWidth: 10
+                },
+                title: {
+                    text: countries[2]
+                },
+                opposite: true
+            }
+        ],
+    })
 });
 
 let searchButton = document.querySelector('#btn-search');
@@ -178,6 +270,8 @@ searchButton.addEventListener('click', async (event) => {
     event.preventDefault();
 
     // clear existing data
+    countries = [];
+
     vaccinesSeries = [];
     deathsSeries = [];
     vaccinesDates = [];
@@ -222,7 +316,6 @@ searchButton.addEventListener('click', async (event) => {
     transformData2(newVaccinesTimeline2, newDeathsTimeline2);
     transformData3(newVaccinesTimeline3, newDeathsTimeline3);
 
-    vaccinesChart.updateSeries([{data: vaccinesSeries}, {data: vaccinesSeries2}, {data: vaccinesSeries3}]);
-
-    deathsChart.updateSeries([{data: filteredDeathsSeries}, {data: filteredDeathsSeries2}, {data: filteredDeathsSeries3}]);
+    vaccinesChart.updateSeries([{ data: vaccinesSeries }, { data: vaccinesSeries2 }, { data: vaccinesSeries3 }]);
+    deathsChart.updateSeries([{ data: filteredDeathsSeries }, { data: filteredDeathsSeries2 }, { data: filteredDeathsSeries3 }]);
 })

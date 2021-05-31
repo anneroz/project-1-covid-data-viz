@@ -27,12 +27,26 @@
 * User is able to search for specific country from a dropdown menu, and limit the day range (anywhere between 'all' to the current day, i.e. '1')). Once both items are entered, and they click on the search button, the graph will update to display what they have searched for.
 * There is a zoom function on the graph, but the search will be more specific.
 * The graphs display information that is obtained from APIs, therefore, there is sometimes a delay in actual cases for the day(s). There is sometimes also discrepencies in the reporting of the numbers for the various countries, so the information might not be accurate due to this.
-* User is able to be redirected to a mock registration form, where they can submit their personal details.
+* User is able to be redirected to a mock registration form.
 * The graphs take up the entire width on small and medium sized devices. On large devices, both graphs will sit on one row.
 
 ### Testing
 * Select any 3 countries from the dropdown, and enter day range, e.g. 'all', or a number, then click search to see the graph load up new information.
 
 ### Deployment
-1. Hosting platform: Netlify
-2. Dependencies: Bootstrap and ApexCharts
+1. Sign up for an account at Netlify
+2. Commit and push your code to Github
+3. Create a new site from Git
+4. Choose Continuous Deployment
+5. Select or search for your repo
+6. Wait for deployment to be done
+
+### Dependencies
+* Bootstrap
+* ApexCharts
+* Google Fonts
+
+### Bugs
+* Synchronization for graphs don't seem to be working well, the dates may not necessarily correspond.
+* Able to update options for vaccines chart on loading only, for both x and y axis, but unable to update for deaths chart on x-axis, and still trying to find out why.
+* Want to be able to have graph dynamically update with country names after user clicks search.
